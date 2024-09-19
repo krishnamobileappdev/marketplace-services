@@ -7,13 +7,13 @@ import { TypeOrmModule } from "@nestjs/typeorm";
   imports: [
     TypeOrmModule.forRoot({
       type: "mysql",
-      host: process.env.MYSQLHOST || "localhost",
-      port: parseInt(process.env.MYSQLPORT, 10) || 3306,
+      host: process.env.MYSQLHOST || 'autorack.proxy.rlwy.net',
+      port: parseInt(process.env.MYSQLPORT, 10) || 55661,
       username: process.env.MYSQLUSER || "root",
-      password: process.env.MYSQLPASSWORD,
-      database: process.env.MYSQLDATABASE,
+      password: process.env.MYSQLPASSWORD || 'IsjuOFvoSxpgjCBoWEsbzIPdRABFTEjB',
+      database: process.env.MYSQLDATABASE || 'railway',
       autoLoadEntities: true,
-      synchronize: true, // set to false in production
+      synchronize: process.env.NODE_ENV !== 'production', // set to false in production
     }),
   ],
   controllers: [AppController],
