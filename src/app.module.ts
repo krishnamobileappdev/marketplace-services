@@ -6,14 +6,14 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: process.env.DB_HOST,
-      port: parseInt(process.env.DB_PORT) || 3306,
-      username: process.env.DB_USERNAME,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_DATABASE,
+      type: "mysql",
+      host: process.env.MYSQLHOST || "localhost",
+      port: parseInt(process.env.MYSQLPORT, 10) || 3306,
+      username: process.env.MYSQLUSER || "root",
+      password: process.env.MYSQLPASSWORD,
+      database: process.env.MYSQLDATABASE,
       autoLoadEntities: true,
-      synchronize: true, // Disable in production
+      synchronize: true, // set to false in production
     }),
   ],
   controllers: [AppController],
